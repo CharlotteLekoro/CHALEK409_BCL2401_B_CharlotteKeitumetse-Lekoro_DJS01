@@ -1,9 +1,3 @@
-/**
- * Debugging Guide
- * 1. Make the code more readable
- * 2. Pick up calculation errors
- * 3. Make these calculations robust such that the calculation does not give an incorrect result, it throws an error to the user if something has gone wrong (parameter used with an incorrect unit of measurement, etc)
- */
 
 // Given Parameters
 const velocity = 10000; // velocity (km/h)
@@ -18,6 +12,13 @@ calculateNewVelocity = (velocity, acceleration, timeInHours) => {
 }
 // Convert time to hours
 const timeInHours = timeInSeconds / 3600;
+
+// Check for valid input parameters
+(velocity < 0 || acceleration < 0 || timeInHours < 0 || fuelBurnRate < 0) ? (
+  console.error("Invalid input parameters. Please check the provided values."),
+  throw new Error("Invalid input parameters.")
+) : null;
+
 
 const newDistance = initialDistance + (velocity*timeInHours) //calcultes new distance
 const remainingFuelAfterBurn = remainingFuel - (fuelBurnRate * timeInHours); //calculates remaining fuel
