@@ -7,18 +7,18 @@ const initialDistance = 0; // distance (km)
 const initialFuel = 5000; // remaining fuel (kg)
 const fuelBurnRate = 0.5; // fuel burn rate (kg/s)
 
-calculateNewVelocity = (velocity, acceleration, timeInHours) => { 
-  return velocity + (acceleration*timeInHours)
+// Function to calculate new velocity
+const calculateNewVelocity = (velocity, acceleration, timeInHours) => { 
+  return velocity + (acceleration * timeInHours);
 }
+
 // Convert time to hours
 const timeInHours = timeInSeconds / 3600;
 
 // Check for valid input parameters
 (velocity < 0 || acceleration < 0 || timeInHours < 0 || fuelBurnRate < 0) ? (
   console.error("Invalid input parameters. Please check the provided values."),
-  throw new Error("Invalid input parameters.")
-) : null;
-
+  throw new Error("Invalid input parameters.")) : null;
 
 const newDistance = initialDistance + (velocity*timeInHours) //calcultes new distance
 const remainingFuelAfterBurn = remainingFuel - (fuelBurnRate * timeInHours); //calculates remaining fuel
