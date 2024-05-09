@@ -15,11 +15,11 @@ const calculateNewVelocity = (velocity, acceleration, timeInHours) => {
 // Convert time to hours
 const timeInHours = timeInSeconds / 3600;
 
-// Check for valid input parameters
-(velocity < 0 || acceleration < 0 || timeInHours < 0 || fuelBurnRate < 0) ? (
-  console.error("Invalid input parameters. Please check the provided values."),
-  throw new Error("Invalid input parameters.")) : null;
-
+// Error handling for negative input parameters or incorrect units of measurement
+if (velocity < 0 || acceleration < 0 || timeInHours < 0 || fuelBurnRate < 0) {
+  console.error("Invalid input parameters. Please check the provided values.");
+  throw new Error("Invalid input parameters.");
+  
 const newDistance = initialDistance + (velocity*timeInHours) //calcultes new distance
 const remainingFuelAfterBurn = remainingFuel - (fuelBurnRate * timeInHours); //calculates remaining fuel
 const newVelocity = calculateNewVelocity(velocity, acceleration, timeInHours) //calculates new velocity based on acceleration
